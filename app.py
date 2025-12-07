@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import or_
 import os
 
 app = Flask(__name__)
@@ -22,6 +23,20 @@ class Product(db.Model):
 @app.route('/')
 def index():
     products = Product.query.all()
+
+    recherche = request.args.get("recherche")
+
+    if recherche:
+        products = Product.query.filter(
+            (Product.name.ilike(f"%{recherche}%")) |
+            (Product.type.ilike(f"%{recherche}%")) |  # au lieu de category
+            (Product.site.ilike(f"%{recherche}%")) |
+            (Product.website.ilike(f"%{recherche}%"))
+        ).all()
+
+    else:
+        products = Product.query.all()
+
     return render_template('index.html', products=products)
 
 @app.route('/add', methods=['GET', 'POST'])

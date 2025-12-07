@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produits</title>
+    <title>Wishlist </title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo2_cercle.png') }}">
 </head>
 <body>
-    <h1>Liste des produits</h1>
-    <a href="{{ url_for('add_product') }}">Ajouter un produit</a>
+    <header>
+        <a href="/">
+            <img classe="img_header" src="{{ url_for('static', filename='logo2.png') }}" alt="Mon Logo">
+        </a>
+        <button class ="ontop" onclick="remonter()">⬆ Haut</button>
+        <form method="get" action="/">
+            <input type="text" name="recherche" id="recherche" placeholder="Rechercher un produit">
+        </form>        
+        <a class = "ajout" href="{{ url_for('add_product') }}"> + Ajouter un produit</a>
+    </header>
+
+    
     <ul>
         {% for product in products %}
             <li>
@@ -26,5 +36,15 @@
             </li>
         {% endfor %}
     </ul>
+
+    <!-- CODE EN JAVA SCRIPT -->
+    <script>
+        function remonter() {
+            window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });}
+    </script>
+
 </body>
 </html>

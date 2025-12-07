@@ -5,6 +5,83 @@
     box-sizing: border-box;
 }
 
+/*Header*/
+header {
+    background-color: #f6f5f4;
+    margin-bottom: 1px;
+    border-right: solid 2px black;
+    margin-right: 90em;
+    padding-bottom: 100%;
+    position : fixed;
+}
+
+header img {
+    height: 10em;   
+    margin-left: 1em ;        
+}
+/* Bouton debut de page */
+.ontop {
+    font-family:"Segoe UI";
+    font-size : 1.1em;
+    color :#495fef;
+    text-decoration :none;
+    margin-left: 4.5em;
+    margin-top : 1em;   
+    border: 2px solid #495fef;
+    border-radius : 0.5em;
+    position :fixed;
+    padding: 0.5em;
+}
+
+.ontop:hover {
+    border: 2px solid #495fef;
+    color : white;
+    background: #495fef;
+    transition : 0.2s;
+    box-shadow: 2px 2px 5px black;
+    cursor: pointer;
+}
+
+/* margin : top → right → bottom → left */
+/*barre de recherche*/
+#recherche {
+    font-family:"Segoe UI";
+    font-size : 1.1em;
+    border: 2px solid #828282;
+    border-radius : 0.5em;
+    height: 2.8em;   
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: -4em;
+}
+
+/* Bouton ajout */
+.ajout {
+    font-family:"Segoe UI";
+    font-size : 1.1em;
+    color : #7c6f24;
+    text-decoration :none;
+    margin-left: 1.5em;
+    margin-top : 1em;
+    border: 2px solid #7c6f24;
+    border-radius : 0.5em;
+    position :fixed;
+    padding: 0.5em;
+}
+
+.ajout:hover {
+    border: 2px solid #7c6f24;
+    color : white;
+    background: #7c6f24;
+    transition : 0.2s;
+    box-shadow: 2px 2px 5px black;
+}
+
+
+
+/* couleur logo #f6f5f4 et #13191b*/
+
+
 /* Corps de la page */
 body {
     font-family: 'Arial', sans-serif;
@@ -28,7 +105,7 @@ h1 {
 }
 
 /* Formulaire d'ajout de produit */
-form {
+.form2 {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -36,7 +113,7 @@ form {
     margin-bottom: 30px;
 }
 
-form input, form button {
+.form2 input, form button {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -44,11 +121,11 @@ form input, form button {
     border: 1px solid #ccc;
 }
 
-form input[type="text"], form input[type="url"], form input[type="number"] {
+.form2 input[type="text"], form input[type="url"], form input[type="number"] {
     font-size: 16px;
 }
 
-form button {
+.form2 button {
     background-color: #4A90E2;
     color: #fff;
     border: none;
@@ -56,7 +133,7 @@ form button {
     transition: background-color 0.3s;
 }
 
-form button:hover {
+.form2 button:hover {
     background-color: #357ABD;
 }
 
@@ -106,6 +183,7 @@ img {
     font-weight: bold;
     color: #4A90E2;
 }
+
 
 /* Lien vers la suppression */
 .supp {
