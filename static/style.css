@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+} 
 
 /*Header*/
 header {
@@ -17,7 +17,7 @@ header {
 
 header img {
     height: 10em;   
-    margin-left: 1em ;        
+    margin-left: 2em ;        
 }
 /* Bouton debut de page */
 .ontop {
@@ -25,7 +25,7 @@ header img {
     font-size : 1.1em;
     color :#495fef;
     text-decoration :none;
-    margin-left: 4.5em;
+    margin-left: 71em;
     margin-top : 1em;   
     border: 2px solid #495fef;
     border-radius : 0.5em;
@@ -49,7 +49,8 @@ header img {
     font-size : 1.1em;
     border: 2px solid #828282;
     border-radius : 0.5em;
-    height: 2.8em;   
+    height: 2.6em;  
+    padding-left: 3px; 
     margin-left: 1em;
     margin-right: 1em;
     margin-top: -4em;
@@ -61,13 +62,14 @@ header img {
     font-size : 1.1em;
     color : #7c6f24;
     text-decoration :none;
-    margin-left: 1.5em;
+    margin-left: 1em;
     margin-top : 1em;
     border: 2px solid #7c6f24;
     border-radius : 0.5em;
     position :fixed;
-    padding: 0.5em;
+    padding: 0.5em 1.2em 0.5em 1.2em;
 }
+/* margin : top → right → bottom → left */
 
 .ajout:hover {
     border: 2px solid #7c6f24;
@@ -104,13 +106,55 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Formulaire d'ajout de produit */
-.form2 {
+
+/* Formulaire modification de produit */
+
+.form1{
     background-color: #fff;
-    padding: 20px;
+    margin-left: 16em;
+    margin-right: 2em;
+    padding: 1em;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+}
+
+.form1 input, form button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
+.form1 input[type="text"], form input[type="url"], form input[type="number"] {
+    font-size: 16px;
+}
+
+.form1 button {
+    background-color: #4A90E2;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form1 button:hover {
+    background-color: #357ABD;
+}
+
+
+
+/* Formulaire d'ajout de produit */
+
+
+.form2 {
+    background-color: #fff;
+    margin-left: 16em;
+    margin-right: 2em;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .form2 input, form button {
@@ -138,12 +182,19 @@ h1 {
 }
 
 /* Liste des produits (affichage en mode liste) */
+
+div{
+    margin-left: 16em;
+    margin-right: 2em;
+}
+
 ul {
     list-style: none;
     padding: 0;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap; 
     gap: 20px;
+    width: 100%; 
 }
 
 li {
@@ -154,15 +205,14 @@ li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 350px;
-    margin: 0 auto;
     text-align: center;
     transition: transform 0.2s;
+    flex-basis: calc(25% - 15px); 
+    max-width: none; 
+    margin: 0; 
 }
 
-li:hover {
-    transform: translateY(-10px);
-}
+
 
 /* Image produit */
 img {

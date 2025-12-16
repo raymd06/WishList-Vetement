@@ -1,0 +1,3 @@
+-Regler l'image la centrée
+-Faire le css sur la page add / update pour eviter que le tableau soit cache
+-Sur la page add pouvoir choisir la categorie en defilant une sorte de mini liste, et pouvoir ajouter une categorie si on veut 

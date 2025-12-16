@@ -19,7 +19,7 @@
         <a class = "ajout" href="{{ url_for('add_product') }}"> + Ajouter un produit</a>
     </header>
 
-    
+    <div>
     <ul>
         {% for product in products %}
             <li>
@@ -36,7 +36,7 @@
             </li>
         {% endfor %}
     </ul>
-
+    </div>
     <!-- CODE EN JAVA SCRIPT -->
     <script>
         function remonter() {
