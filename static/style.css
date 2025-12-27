@@ -188,6 +188,9 @@ div{
     margin-right: 2em;
 }
 
+.vide {
+    padding-bottom: 2em;
+}
 ul {
     list-style: none;
     padding: 0;
