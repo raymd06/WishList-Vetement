@@ -1,51 +1,61 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wishlist </title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo2_cercle.png') }}">
-</head>
-<body>
-    <header>
-        <a href="/">
-            <img classe="img_header" src="{{ url_for('static', filename='logo2.png') }}" alt="Mon Logo">
-        </a>
-        <button class ="ontop" onclick="remonter()">⬆ Haut</button>
-        <form method="get" action="/">
-            <input type="text" name="recherche" id="recherche" placeholder="Rechercher un produit">
-        </form>        
-        <a class = "ajout" href="{{ url_for('add_product') }}"> + Ajouter un produit</a>
-    </header>
+{% extends "base.html" %}
 
-    <div>
-        <p class="vide"></p>
-    <ul>
-        {% for product in products %}
-            <li>
-                <h2>{{ product.name }}</h2>
-                <p>Type: {{ product.type }}</p>
-                <p>Prix: {{ product.price }} €</p>
-                <p>Site: {{ product.site }}</p>
-                <a href="{{ product.website }}" target="_blank" class="lien">Lien</a>
-                {% if product.image_url %}
-                    <img src="{{ product.image_url }}" alt="Image du produit">
-                {% endif %}
-                <a href="{{ url_for('edit_product', id=product.id) }}" class="modif">Modifier</a>
-                <a href="{{ url_for('delete_product', id=product.id) }}" class="supp">Supprimer</a>
-            </li>
-        {% endfor %}
-    </ul>
-    </div>
-    <!-- CODE EN JAVA SCRIPT -->
-    <script>
-        function remonter() {
-            window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });}
-    </script>
+{% block title %}Ma wishlist{% endblock %}
 
-</body>
-</html>
+{% block content %}
+{% set recherche = request.args.get('recherche', '') %}
+
+<div class="page-head">
+    <h1>{% if recherche %}Résultats pour « {{ recherche }} »{% else %}Ma wishlist{% endif %}</h1>
+    <p class="count">{{ products|length }} article{{ 's' if products|length > 1 }}</p>
+    {% if recherche %}
+        <a class="btn-text" href="{{ url_for('index') }}">Effacer la recherche</a>
+    {% endif %}
+</div>
+
+{% if products %}
+<ul class="grid">
+    {% for product in products %}
+    <li class="card">
+        <div class="card-media">
+            {% if product.image_url %}
+                <img src="{{ product.image_url }}" alt="{{ product.name }}" loading="lazy">
+            {% else %}
+                <svg class="placeholder" viewBox="0 0 64 64" role="img" aria-label="Pas d'image">
+                    <path d="M32 14a5 5 0 1 1 5 5c-3 0-5 2-5 5v3M32 27 8 44a3 3 0 0 0 2 5h44a3 3 0 0 0 2-5L32 27Z"
+                          fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            {% endif %}
+            <span class="price">{{ ('%.2f'|format(product.price))|replace('.', ',') }} €</span>
+        </div>
+
+        <div class="card-body">
+            <p class="card-type">{{ product.type }}</p>
+            <h2 class="card-name">{{ product.name }}</h2>
+            <p class="card-site">{{ product.site }}</p>
+        </div>
+
+        <div class="card-actions">
+            <a class="btn btn-primary btn-small" href="{{ product.website }}" target="_blank" rel="noopener noreferrer">Voir sur le site</a>
+            <div class="card-links">
+                <a class="btn-text" href="{{ url_for('edit_product', id=product.id) }}">Modifier</a>
+                <a class="btn-text danger" href="{{ url_for('delete_product', id=product.id) }}"
+                   data-confirm="Supprimer « {{ product.name }} » de la wishlist ?">Supprimer</a>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<div class="empty">
+    {% if recherche %}
+        <p class="empty-title">Aucun article ne correspond à « {{ recherche }} ».</p>
+        <p>Essaie un autre mot, ou efface la recherche pour tout revoir.</p>
+    {% else %}
+        <p class="empty-title">Ta wishlist est vide.</p>
+        <p>Ajoute un premier vêtement pour la démarrer.</p>
+        <a class="btn btn-add" href="{{ url_for('add_product') }}">+ Ajouter un produit</a>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

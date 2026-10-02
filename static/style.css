@@ -1,297 +1,542 @@
-/* Reset de base pour les marges et paddings */
-* {
+/* ==========================================================================
+   Wishlist de vêtements : style 2 (bordures noires, ombres pleines, couleurs vives)
+   Fonctionne avec les mêmes templates que le style précédent.
+   Pour changer les couleurs, modifie uniquement les variables ci-dessous.
+   ========================================================================== */
+
+:root {
+    --paper: #f6f5f4;
+    --surface: #ffffff;
+    --ink: #13191b;
+    --muted: #4d5557;
+
+    --yellow: #ffd84d;
+    --blue: #495fef;
+    --blue-dark: #3347c9;
+    --pink: #ffd6e0;
+    --sky: #cfe0ff;
+    --mint: #cdeedb;
+    --danger: #c62d1f;
+
+    --border: 2px solid var(--ink);
+    --shadow: 4px 4px 0 var(--ink);
+    --shadow-big: 7px 7px 0 var(--ink);
+
+    --font-title: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --font-body: "DM Sans", "Segoe UI", system-ui, sans-serif;
+
+    --topbar-height: 5rem;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-} 
-
-/*Header*/
-header {
-    background-color: #f6f5f4;
-    margin-bottom: 1px;
-    border-right: solid 2px black;
-    margin-right: 90em;
-    padding-bottom: 100%;
-    position : fixed;
 }
 
-header img {
-    height: 10em;   
-    margin-left: 2em ;        
-}
-/* Bouton debut de page */
-.ontop {
-    font-family:"Segoe UI";
-    font-size : 1.1em;
-    color :#495fef;
-    text-decoration :none;
-    margin-left: 71em;
-    margin-top : 1em;   
-    border: 2px solid #495fef;
-    border-radius : 0.5em;
-    position :fixed;
-    padding: 0.5em;
+html {
+    scroll-padding-top: calc(var(--topbar-height) + 1rem);
 }
 
-.ontop:hover {
-    border: 2px solid #495fef;
-    color : white;
-    background: #495fef;
-    transition : 0.2s;
-    box-shadow: 2px 2px 5px black;
-    cursor: pointer;
-}
-
-/* margin : top → right → bottom → left */
-/*barre de recherche*/
-#recherche {
-    font-family:"Segoe UI";
-    font-size : 1.1em;
-    border: 2px solid #828282;
-    border-radius : 0.5em;
-    height: 2.6em;  
-    padding-left: 3px; 
-    margin-left: 1em;
-    margin-right: 1em;
-    margin-top: -4em;
-}
-
-/* Bouton ajout */
-.ajout {
-    font-family:"Segoe UI";
-    font-size : 1.1em;
-    color : #7c6f24;
-    text-decoration :none;
-    margin-left: 1em;
-    margin-top : 1em;
-    border: 2px solid #7c6f24;
-    border-radius : 0.5em;
-    position :fixed;
-    padding: 0.5em 1.2em 0.5em 1.2em;
-}
-/* margin : top → right → bottom → left */
-
-.ajout:hover {
-    border: 2px solid #7c6f24;
-    color : white;
-    background: #7c6f24;
-    transition : 0.2s;
-    box-shadow: 2px 2px 5px black;
-}
-
-
-
-/* couleur logo #f6f5f4 et #13191b*/
-
-
-/* Corps de la page */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fc;
-    color: #333;
-    line-height: 1.6;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--paper);
 }
 
-/* Conteneur principal */
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
+img {
+    display: block;
+    max-width: 100%;
 }
 
-/* Entête */
-h1 {
-    text-align: center;
-    color: #4A90E2;
-    margin-bottom: 20px;
-}
-
-
-/* Formulaire modification de produit */
-
-.form1{
-    background-color: #fff;
-    margin-left: 16em;
-    margin-right: 2em;
-    padding: 1em;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.form1 input, form button {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-
-.form1 input[type="text"], form input[type="url"], form input[type="number"] {
-    font-size: 16px;
-}
-
-.form1 button {
-    background-color: #4A90E2;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.form1 button:hover {
-    background-color: #357ABD;
-}
-
-
-
-/* Formulaire d'ajout de produit */
-
-
-.form2 {
-    background-color: #fff;
-    margin-left: 16em;
-    margin-right: 2em;
-    padding: 1em;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.form2 input, form button {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.form2 input[type="text"], form input[type="url"], form input[type="number"] {
-    font-size: 16px;
-}
-
-.form2 button {
-    background-color: #4A90E2;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.form2 button:hover {
-    background-color: #357ABD;
-}
-
-/* Liste des produits (affichage en mode liste) */
-
-div{
-    margin-left: 16em;
-    margin-right: 2em;
-}
-
-.vide {
-    padding-bottom: 2em;
-}
 ul {
     list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 20px;
-    width: 100%; 
 }
 
-li {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-        display: flex;
-    flex-direction: column;
+a {
+    color: inherit;
+}
+
+:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 3px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* ---------- Barre du haut ---------- */
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    text-align: center;
-    transition: transform 0.2s;
-    flex-basis: calc(25% - 15px); 
-    max-width: none; 
-    margin: 0; 
+    gap: 1.25rem;
+    min-height: var(--topbar-height);
+    padding: 0.7rem clamp(1rem, 4vw, 2.5rem);
+    background: var(--surface);
+    border-bottom: var(--border);
 }
 
-/* Image produit */
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    margin-bottom: 15px;
+.brand img {
+    height: 3rem;
+    width: auto;
 }
 
-/* Détails du produit */
-.product-details {
-    margin-top: 15px;
-    font-size: 16px;
-    color: #777;
+.search {
+    width: 100%;
+    max-width: 34rem;
+    justify-self: center;
 }
 
-.product-details span {
-    font-weight: bold;
-    color: #4A90E2;
+.search input {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    font: inherit;
+    color: var(--ink);
+    background: var(--paper);
+    border: var(--border);
+    border-radius: 999px;
 }
 
+.search input::placeholder {
+    color: var(--muted);
+}
 
-/* Lien vers la suppression */
-.supp {
-    color: #ea3521;
+.search input:focus {
+    outline: none;
+    background: var(--surface);
+    box-shadow: 4px 4px 0 var(--blue);
+}
+
+/* ---------- Boutons : ils s'enfoncent quand on clique ---------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.15rem;
+    font: inherit;
+    font-weight: 700;
+    color: var(--ink);
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.2s;
-}
-
-.modif {
-    color: #47a4f0;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.2s;
-}
-
-.lien {
-    color: #3c53e7;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.2s;
-}
-
-.supp:hover {
-    color: #b32727;
-}
-
-.modif:hover {
-    color: #215177;
-}
-
-.lien:hover {
-    color: #1f2a75;
-}
-
-/* Bouton de suppression */
-button.delete-btn {
-    background-color: #ff1900;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
+    background: var(--surface);
+    border: var(--border);
+    border-radius: 10px;
+    box-shadow: 3px 3px 0 var(--ink);
     cursor: pointer;
-    margin-top: 15px;
+    white-space: nowrap;
+    transition: transform 0.1s, box-shadow 0.1s;
 }
 
-button.delete-btn:hover {
-    background-color: #ff1900;
+.btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--ink);
 }
 
-/* Responsivité pour écrans plus petits */
-@media (max-width: 768px) {
-    .container {
-        width: 95%;
+.btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--ink);
+}
+
+.btn-primary {
+    color: #fff;
+    background: var(--blue);
+}
+
+.btn-primary:hover {
+    background: var(--blue-dark);
+}
+
+.btn-add {
+    background: var(--yellow);
+}
+
+.btn-ghost {
+    background: var(--surface);
+}
+
+.btn-small {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.95rem;
+}
+
+.btn-text {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+.btn-text:hover {
+    color: var(--blue);
+}
+
+.btn-text.danger:hover {
+    color: var(--danger);
+}
+
+/* ---------- Mise en page ---------- */
+
+.page {
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 2.25rem clamp(1rem, 4vw, 2.5rem) 4.5rem;
+}
+
+.page-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    margin-bottom: 2.25rem;
+}
+
+h1 {
+    font-family: var(--font-title);
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    display: inline;
+    background: linear-gradient(transparent 60%, var(--yellow) 60%);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.count {
+    padding: 0.1rem 0.8rem;
+    font-weight: 700;
+    background: var(--surface);
+    border: var(--border);
+    border-radius: 999px;
+}
+
+/* ---------- Grille de produits ---------- */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 2rem 1.75rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: var(--border);
+    border-radius: 14px;
+    box-shadow: 5px 5px 0 var(--ink);
+    overflow: hidden;
+    transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-big);
+}
+
+.card-media {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--pink);
+    border-bottom: var(--border);
+}
+
+/* Les articles sans image prennent une couleur tournante */
+.card:nth-child(4n + 2) .card-media { background: var(--sky); }
+.card:nth-child(4n + 3) .card-media { background: var(--mint); }
+.card:nth-child(4n + 4) .card-media { background: var(--yellow); }
+
+.card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.placeholder {
+    width: 40%;
+    color: var(--ink);
+}
+
+/* Prix : étiquette jaune légèrement penchée */
+.price {
+    position: absolute;
+    left: 0.8rem;
+    bottom: 0.8rem;
+    padding: 0.2rem 0.7rem;
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--ink);
+    background: var(--yellow);
+    border: var(--border);
+    border-radius: 8px;
+    box-shadow: 2px 2px 0 var(--ink);
+    transform: rotate(-3deg);
+}
+
+.card-body {
+    padding: 1rem 1rem 0.5rem;
+}
+
+.card-type {
+    display: inline-block;
+    padding: 0 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: var(--paper);
+    border: var(--border);
+    border-radius: 999px;
+}
+
+.card-name {
+    margin: 0.5rem 0 0.25rem;
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-site {
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+.card-actions {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 0.75rem 1rem 1.1rem;
+}
+
+.card-links {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ---------- État vide ---------- */
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    max-width: 32rem;
+    padding: 1.75rem;
+    background: var(--surface);
+    border: 2px dashed var(--ink);
+    border-radius: 14px;
+}
+
+.empty-title {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.empty .btn {
+    margin-top: 0.75rem;
+}
+
+/* ---------- Formulaires (ajout / modification) ---------- */
+
+.form-wrap {
+    max-width: 40rem;
+    margin: 0 auto;
+}
+
+.form-wrap h1 {
+    margin-bottom: 1.5rem;
+}
+
+.form-wrap h1 + .form,
+.form-wrap > .form {
+    margin-top: 1.75rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: clamp(1.25rem, 4vw, 2rem);
+    background: var(--surface);
+    border: var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow-big);
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+}
+
+.field label {
+    font-weight: 700;
+}
+
+.field input {
+    width: 100%;
+    padding: 0.7rem 0.85rem;
+    font: inherit;
+    color: var(--ink);
+    background: var(--paper);
+    border: var(--border);
+    border-radius: 8px;
+}
+
+.field input::placeholder {
+    color: #747b7d;
+}
+
+.field input:focus {
+    outline: none;
+    background: var(--surface);
+    box-shadow: 4px 4px 0 var(--blue);
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.preview img {
+    max-height: 11rem;
+    width: auto;
+    border: var(--border);
+    border-radius: 8px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* ---------- Bouton retour en haut ---------- */
+
+.to-top {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 20;
+    width: 3.25rem;
+    height: 3.25rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--yellow);
+    border: var(--border);
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.1s, box-shadow 0.1s;
+}
+
+.to-top.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.to-top:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--ink);
+}
+
+/* ---------- Petits écrans ---------- */
+
+@media (max-width: 720px) {
+    .topbar {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "brand add"
+            "search search";
+        row-gap: 0.6rem;
     }
 
-    li {
-        width: 90%;
+    .brand {
+        grid-area: brand;
+    }
+
+    .btn-add {
+        grid-area: add;
+        padding: 0.5rem 0.9rem;
+    }
+
+    .search {
+        grid-area: search;
+        max-width: none;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
+        gap: 1.5rem 1rem;
+    }
+
+    .card {
+        box-shadow: 3px 3px 0 var(--ink);
+    }
+
+    .field-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+}
+
+/* ---------- Accessibilité : mouvement réduit ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+
+    .card:hover,
+    .btn:hover {
+        transform: none;
+    }
+
+    html {
+        scroll-behavior: auto;
     }
 }

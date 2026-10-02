@@ -1,42 +1,53 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un produit</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <header>
-        <a href="/">
-            <img classe="img_header" src="{{ url_for('static', filename='logo2.png') }}" alt="Mon Logo">
-        </a>
-        <form method="get" action="/">
-            <input type="text" name="recherche" id="recherche" placeholder="Rechercher un produit">
-        </form>        
-        <a class = "ajout" href="{{ url_for('add_product') }}"> + Ajouter un produit</a>
-    </header>
+{% extends "base.html" %}
+
+{% block title %}Ajouter un produit{% endblock %}
+
+{% block content %}
+{% set liste_types = types if types else ['T-shirt', 'Pull', 'Pantalon', 'Veste', 'Chaussures', 'Accessoire'] %}
+
+<div class="form-wrap">
     <h1>Ajouter un produit</h1>
-    <form class="form2" action="{{ url_for('add_product') }}" method="POST">
-        <label for="name">Nom:</label>
-        <input type="text" name="name" id="name" required>
-        
-        <label for="type">Type:</label>
-        <input type="text" name="type" id="type" required>
 
-        <label for="price">Prix:</label>
-        <input type="float" name="price" id="price" required>
+    <form class="form" action="{{ url_for('add_product') }}" method="POST">
+        <div class="field">
+            <label for="name">Nom</label>
+            <input type="text" name="name" id="name" required autofocus>
+        </div>
 
-        <label for="site">Site:</label>
-        <input type="text" name="site" id="site" required>
+        <div class="field-row">
+            <div class="field">
+                <label for="type">Type</label>
+                <input type="text" name="type" id="type" list="types-list" placeholder="Pull, pantalon…" required>
+                <datalist id="types-list">
+                    {% for t in liste_types %}<option value="{{ t }}">{% endfor %}
+                </datalist>
+            </div>
 
-        <label for="website">Site Web:</label>
-        <input type="url" name="website" id="website" required>
+            <div class="field">
+                <label for="price">Prix (€)</label>
+                <input type="number" name="price" id="price" step="0.01" min="0" inputmode="decimal" required>
+            </div>
+        </div>
 
-        <label for="image_url">URL de l'image:</label>
-        <input type="url" name="image_url" id="image_url">
+        <div class="field">
+            <label for="site">Nom de la boutique</label>
+            <input type="text" name="site" id="site" placeholder="Zara, Uniqlo…" required>
+        </div>
 
-        <button type="submit">Ajouter</button>
+        <div class="field">
+            <label for="website">Lien vers le produit</label>
+            <input type="url" name="website" id="website" placeholder="https://" required>
+        </div>
+
+        <div class="field">
+            <label for="image_url">Lien de l'image (facultatif)</label>
+            <input type="url" name="image_url" id="image_url" placeholder="https://">
+        </div>
+
+        <div class="form-actions">
+            <a class="btn btn-ghost" href="{{ url_for('index') }}">Annuler</a>
+            <button class="btn btn-primary" type="submit">Ajouter à ma wishlist</button>
+        </div>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}

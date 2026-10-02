@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ma wishlist{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo2_cercle.png') }}">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='logo2.png') }}" alt="Ma wishlist, retour à l'accueil">
+        </a>
+
+        <form class="search" method="get" action="{{ url_for('index') }}" role="search">
+            <label for="recherche" class="sr-only">Rechercher un produit</label>
+            <input type="search" name="recherche" id="recherche"
+                   placeholder="Rechercher un nom, un type, un site"
+                   value="{{ request.args.get('recherche', '') }}">
+        </form>
+
+        <a class="btn btn-add" href="{{ url_for('add_product') }}">+ Ajouter un produit</a>
+    </header>
+
+    <main class="page">
+        {% block content %}{% endblock %}
+    </main>
+
+    <button class="to-top" id="to-top" type="button" aria-label="Retour en haut de la page">↑</button>
+
+    <script>
+        (function () {
+            var toTop = document.getElementById('to-top');
+
+            function toggleToTop() {
+                toTop.classList.toggle('is-visible', window.scrollY > 500);
+            }
+            window.addEventListener('scroll', toggleToTop, { passive: true });
+            toggleToTop();
+
+            toTop.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Demande confirmation avant les actions marquées data-confirm (ex : suppression)
+            document.addEventListener('click', function (e) {
+                var el = e.target.closest('[data-confirm]');
+                if (el && !window.confirm(el.dataset.confirm)) {
+                    e.preventDefault();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
